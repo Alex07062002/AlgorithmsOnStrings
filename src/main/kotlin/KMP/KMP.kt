@@ -1,5 +1,6 @@
 package KMP
 
+//испольхует метод префикс-функции для оптимизации сравнений подстроки в тексте . Избегает повторных сравнений
 /**
  * Class for realization of algorithm KMP
  * (more effective (O(n+m), where often m << n) than native algorithm O(n^2))
@@ -27,7 +28,7 @@ class KMP {
         }
         return piArray
     }
-
+// search pre-func for array
     private fun effectivePrefixFunction(pattern : String) : IntArray{
         val LTSArray = IntArray(pattern.length){0}
         for (i in 1..<pattern.length) {
@@ -37,16 +38,17 @@ class KMP {
         }
         return LTSArray
     }
-
-    fun searchInputKMP(text : String, pattern : String) : List<Int>{
+//search substring in text
+    fun searchInputKMP(text : String, pattern : String) : List<Int>{ // KMP - search substring in text
+        // (more effective (O(n+m), where often m << n) than native algorithm O(n^2))
 
         //val LTSArray = prefixFunction(image) <- O(n^2) (native algorithm search blocks)
-        val LTSArray = effectivePrefixFunction(pattern) //<- O(m) (effective algorithm search blocks)
+        val LTSArray = effectivePrefixFunction(pattern) //<- O(m) (effective algorithm search blocks) - array prefix boarder array
         val result = mutableListOf<Int>()
         var compareIndex = 0
 
         for (i in text.indices) {
-            while (compareIndex > 0 && text[i] != pattern[compareIndex]) {
+            while (compareIndex > 0 && text[i] != pattern[compareIndex]) { // Check text by prefix array
                 compareIndex = LTSArray[compareIndex - 1]
             }
 

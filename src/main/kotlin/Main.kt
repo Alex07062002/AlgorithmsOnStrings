@@ -1,7 +1,10 @@
-import KMP.KMP
-import ZBlocks.Zblocks
+import SuffixArray.SuffixArray
 
 fun main(args: Array<String>) {
-    KMP().searchInputKMP("abababababababababccccccabababab","abc").forEach { print("$it ") }
-   // Zblocks().suffixBorderArray("ababa").forEach{print("$it ")}
+  //  println(ShiftAnd().SearchString("ababababababcab","abc"))
+   // KMP().searchInputKMP("abababababababababccccccabababab","abc").forEach { println("$it ") }
+   // Zblocks().prefixBorderArray("ababa").forEach{print("$it ")}
+    //SuffixTreeUkkonen.SuffixTree("abcabxabcd").visualize()
+    SuffixArray().buildSuffixArray("abcabxabcd","abcabxabcd".length)
+
 }

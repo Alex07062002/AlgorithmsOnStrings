@@ -1,5 +1,6 @@
 package ZBlocks
 
+//основан на предварительном вычислении z-функци  для строки. затем использует эти значение для сравнения образца с текстом.
 import java.lang.Integer.max
 
 class Zblocks {
@@ -85,7 +86,7 @@ class Zblocks {
         while (copyI1 < length && copyI2 < length && pattern[copyI1++] == pattern[copyI2++]) ++eqLen
         return eqLen
     }
-
+//
     fun prefixZValues(pattern : String) : IntArray{
         val length = pattern.length
         val prefixZArray = IntArray(length){0}
